@@ -1,0 +1,3 @@
+#!/bin/sh
+umount /mnt/storage_disk
+cryptsetup close /dev/mapper/storage_disk

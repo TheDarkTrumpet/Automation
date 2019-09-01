@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cryptsetup -y luksOpen /dev/sdd2 storage_disk -d <KEYFILE>
+mount /mnt/storage_disk
