@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sh ~/tools/bin/i3lock.sh
+sudo /usr/local/bin/suspend
