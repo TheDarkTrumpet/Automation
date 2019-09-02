@@ -1,0 +1,13 @@
+#!/bin/sh
+
+sudo docker run \
+--rm \
+     -d \
+--name plex \
+--network=host \
+-e TZ="America/Chicago" \
+-e PLEX_CLAIM="<CLAIM>" \
+-v /lts/plex/db:/config \
+-v /lts/plex/tmp:/transcode \
+-v <SOURCE_LOC>:/data \
+plexinc/pms-docker
