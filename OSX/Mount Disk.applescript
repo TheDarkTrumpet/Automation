@@ -1,0 +1,1 @@
+use AppleScript version "2.4" -- Yosemite (10.10) or lateruse scripting additionsdo shell script "ssh -t dthole@localarch 'sudo /home/dthole/tools/bin/mount_storage'"delay 3tell application "Finder"	mount volume "smb://localarch/Storage_Disk"	mount volume "smb://localarch/Public_Storage_Disk"end tell
