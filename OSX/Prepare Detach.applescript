@@ -4,10 +4,11 @@ use scripting additions
 # Purpose: Prepare and Detach current session (for moving around), wrapper scripts for other actions
 display notification "Preparations for Move" with title "Detach Operation" subtitle "Operation Started"
 
-
 # Part 1 - Synchronize Git Repositories
+do shell script "~/tools/bin/syncRepos"
 
 # Part 2 - Synchronize Org
+do shell script "~/tools/bin/syncOrg"
 
 # Part 3 - Unmount Disks
 display notification "Preparations for Move" with title "Detach Operation" subtitle "Operation: Unmount Disk Start"
