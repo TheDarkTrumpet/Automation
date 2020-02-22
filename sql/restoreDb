@@ -1,0 +1,32 @@
+#!/bin/sh
+
+image_name='mcr.microsoft.com/mssql/server'
+backup_dir_base='/mnt/storage_disk/work/TDT/DatabaseBackups'
+temp_md5=`date | md5 | cut -f 1 -d ' '`
+temp_dir="/tmp/$temp_md5"
+db_name=$1
+
+full_backup="$backup_dir_base/$db_name.bak"
+
+if [ ! -f "$full_backup" ]
+then
+    echo "Backup, $full_backup, does not exist"
+    exit 0
+fi
+
+if [ -z "`docker ps | grep -i 'mssql'`" ]
+then
+    echo "Making directory: $temp_dir"
+    mkdir $temp_dir
+    
+    echo "Copying backup from $full_backup to $temp_dir"
+    cp $full_backup $temp_dir
+    
+    echo "MSSQL was determined not to be running, starting that up first"
+    docker run --rm -d -v"$temp_dir:/data" -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=pAssw04d' --name mssql -p 1433:1433 -d mcr.microsoft.com/mssql/server
+    #sleep 20
+else
+    echo "This command can only work when mssql is currently not loaded, due to the mounting of the backup file"
+    exit 0
+fi
+
