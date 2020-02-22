@@ -1,0 +1,1 @@
+use AppleScript version "2.4" -- Yosemite (10.10) or lateruse scripting additionstell application "Finder"	set theWin to window 1	set thePath to (POSIX path of (target of theWin as alias))		do shell script "open -a \"Terminal\" " & quoted form of thePathend tell

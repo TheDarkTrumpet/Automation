@@ -1,0 +1,1 @@
+use AppleScript version "2.4" -- Yosemite (10.10) or lateruse scripting additionstell application "Finder"	set theWin to window 1	set thePath to (POSIX path of (target of theWin as alias))	set theCommand to "/Users/dthole/tools/bin/pycharm " & quoted form of thePath	do shell script theCommandend tell
